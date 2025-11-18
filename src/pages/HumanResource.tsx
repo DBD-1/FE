@@ -21,8 +21,8 @@ import { AlertCircle, CheckCircle2, UserPlus } from "lucide-react";
 
 // 가짜 데이터 (status: 0 = 투입가능, 1 = 참여중)
 const INITIAL_DATA = [
-  { id: 1, name: "김한슬", rank: "선임", skill: "React", status: 0 },
-  { id: 2, name: "이태연", rank: "책임", skill: "Java", status: 1 },
+  { id: 1, name: "김이박", rank: "선임", skill: "React", status: 0 },
+  { id: 2, name: "가나디", rank: "책임", skill: "Java", status: 1 },
   { id: 3, name: "박지성", rank: "사원", skill: "React", status: 0 },
   { id: 4, name: "손흥민", rank: "수석", skill: "Python", status: 0 },
   { id: 5, name: "김연아", rank: "책임", skill: "Java", status: 0 },

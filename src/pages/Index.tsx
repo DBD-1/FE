@@ -42,7 +42,7 @@ const Index = () => {
 
         <Button 
           size="lg" 
-          onClick={() => navigate("/login")}
+          onClick={() => navigate("/dashboard")}
           className="group"
         >
           시작하기

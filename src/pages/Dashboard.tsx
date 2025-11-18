@@ -1,6 +1,6 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ClipboardCheck, Users, TrendingUp } from "lucide-react";
+import { ClipboardCheck, Users, TrendingUp, Search } from "lucide-react";
 
 const Dashboard = () => {
   return (

@@ -1,28 +1,42 @@
 /**
- * 직원이 참여한 프로젝트의 정보를 나타냅니다.
+ * 종료된 프로젝트 목록의 개별 프로젝트 데이터 구조를 정의합니다.
  */
-export interface EmployeeProject {
-  id: number;
-  name: string;
-  endDate: string; // 종료 날짜 (예: "2025-11-18")
-  evaluationStatus: "COMPLETED" | "PENDING"; // 평가 완료 | 미완료
+export interface ProjectForEvaluation {
+  project_id: number;
+  project_name: string;
+  end_date: string;
+  client_id: number;
+  client_name: string;
+  eval_status: "완료" | "미완료";
 }
 
 /**
- * 고객 신용 평가 항목의 정보를 나타냅니다.
+ * 고객 신용 평가 항목의 데이터 구조를 정의합니다.
  */
 export interface EvaluationItem {
-  id: number;
-  name: string; // 항목 이름 (예: "의사소통 능력")
+  client_item_code: number;
+  item_name: string;
 }
 
 /**
- * 평가 점수 제출 시 서버로 보낼 데이터 구조입니다.
+ * 고객 평가 등록 시 API에 전송하는 요청 Body의 데이터 구조를 정의합니다.
  */
-export interface EvaluationSubmission {
-  projectId: number;
-  results: {
-    itemId: number;
+export interface EvaluationSubmitPayload {
+  evaluator_employee_id: number;
+  project_id: number;
+  client_id: number;
+  scores: {
+    client_item_code: number;
     score: number;
   }[];
+}
+
+/**
+ * 고객 등급 조회 API의 응답 데이터 구조를 정의합니다.
+ */
+export interface ClientGrade {
+  client_id: number;
+  average_score: number;
+  grade: string;
+  priority: number;
 }

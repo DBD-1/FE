@@ -1,0 +1,22 @@
+{
+    "client_evaluation_id": 1,
+    "evaluator_name": "김민준",
+    "project_name": "사내 인사 시스템 구축",
+    "client_name": "미래IT",
+    "average_score": 92.33,
+    "grade": "A",
+    "scores": [
+        {
+            "item_name": "의사소통의 원활성",
+            "score": 95
+        },
+        {
+            "item_name": "대금 지급의 신뢰도",
+            "score": 92
+        },
+        {
+            "item_name": "요구사항 명확성",
+            "score": 90
+        }
+    ]
+}

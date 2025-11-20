@@ -1,0 +1,14 @@
+[
+  {
+    "client_id": 1,
+    "average_score": 88.25,
+    "grade": "B",
+    "priority": 2
+  },
+  {
+    "client_id": 4,
+    "average_score": 75.50,
+    "grade": "C",
+    "priority": 3
+  }
+]

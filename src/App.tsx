@@ -11,6 +11,10 @@ import Employees from "./pages/Employees";
 import NotFound from "./pages/NotFound";
 import HumanResource from "./pages/HumanResource";
 
+//유민 언니
+import EvaluationListPage from "./pages/EvaluationListPage";
+import EvaluationPage from "./pages/EvaluationPage";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -23,9 +27,13 @@ const App = () => (
           <Route path="/" element={<Index />} />
           {/* <Route path="/login" element={<Login />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/evaluation" element={<Evaluation />} />
+          {/* <Route path="/evaluation" element={<Evaluation />} /> */}
           <Route path="/employees" element={<Employees />} />
           <Route path="/human-resource" element={<HumanResource />} />
+            {/* 평가 목록 페이지 */}
+          <Route path="/evaluation" element={<EvaluationListPage />} /> 
+          {/* 평가 입력 페이지 */}
+          <Route path="/evaluation/:projectId" element={<EvaluationPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

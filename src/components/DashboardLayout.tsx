@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { NavLink } from "./NavLink";
-import { Building2, ClipboardCheck, Users } from "lucide-react";
+import { Building2, ClipboardCheck, Users, UserPlus } from "lucide-react";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -39,6 +39,16 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               >
                 <Users className="h-4 w-4" />
                 직원 검색
+              </NavLink>
+
+              {/* ★ 새로 추가된 [인력 투입] 버튼 ★ */}
+              <NavLink
+                to="/human-resource"
+                className="px-4 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors flex items-center gap-2"
+                activeClassName="text-foreground bg-muted"
+              >
+                <UserPlus className="h-4 w-4" />
+                인력 투입
               </NavLink>
             </nav>
           </div>

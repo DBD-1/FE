@@ -69,4 +69,8 @@ export const submitClientEvaluation = (evaluationData: unknown) => {
  */
 export const getClientGrade = (clientId: number) => {
   return fetchData(`/api/clients/${clientId}/grade`);
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> ada344c0a5d34d93d39b620b80226134ba3dd36a

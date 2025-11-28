@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Button } from "@/components/ui/button";
@@ -10,7 +10,7 @@ import { getEvaluationItems, submitClientEvaluation } from '@/api/api';
 import type { EvaluationItem, EvaluationSubmitPayload } from '@/types/evaluation';
 
 // 평가자 ID는 현재 로그인 시스템이 없으므로 고정값으로 사용합니다.
-const MOCK_EMPLOYEE_ID = 10001; 
+const MOCK_EMPLOYEE_ID = 10013; 
 
 /**
  * 선택된 프로젝트에 대한 고객 신용 평가를 입력하고 제출하는 페이지 컴포넌트입니다.
@@ -30,7 +30,7 @@ function EvaluationPage() {
   const [clientId, setClientId] = useState<number | null>(null);
 
   // 1. useQuery를 사용하여 평가 항목 목록을 API로부터 가져옵니다.
-  const { data: items = [], isLoading: isLoadingItems, error: itemsError } = useQuery<EvaluationItem[], Error>({
+  const { data: items = [], isLoading: isLoadingItems, error: itemsError } = useQuery({
     queryKey: ['evaluationItems'],
     queryFn: getEvaluationItems,
   });

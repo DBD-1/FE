@@ -1,55 +1,36 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-//import Login from "./pages/Login";
+import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import Evaluation from "./pages/Evaluation";
+import EvaluationListPage from "./pages/EvaluationListPage";
+import EvaluationPage from "./pages/EvaluationPage";
 import Employees from "./pages/Employees";
-import NotFound from "./pages/NotFound";
 import HumanResource from "./pages/HumanResource";
-<<<<<<< HEAD
-import EvaluationListPage from "./pages/EvaluationListPage";
-import EvaluationPage from "./pages/EvaluationPage";
-=======
+import ClientRankingPage from "./pages/ClientRankingPage";
+import NotFound from "./pages/NotFound";
 
-//유민 언니
-import EvaluationListPage from "./pages/EvaluationListPage";
-import EvaluationPage from "./pages/EvaluationPage";
-
->>>>>>> ada344c0a5d34d93d39b620b80226134ba3dd36a
+// QueryClient 인스턴스 생성
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Router>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
-<<<<<<< HEAD
-          <Route path="/evaluation" element={<EvaluationListPage />} /> 
+          <Route path="/evaluation" element={<EvaluationListPage />} />
           <Route path="/evaluation/:projectId" element={<EvaluationPage />} />
-=======
-          {/* <Route path="/evaluation" element={<Evaluation />} /> */}
->>>>>>> ada344c0a5d34d93d39b620b80226134ba3dd36a
           <Route path="/employees" element={<Employees />} />
           <Route path="/human-resource" element={<HumanResource />} />
-            {/* 평가 목록 페이지 */}
-          <Route path="/evaluation" element={<EvaluationListPage />} /> 
-          {/* 평가 입력 페이지 */}
-          <Route path="/evaluation/:projectId" element={<EvaluationPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/client-ranking" element={<ClientRankingPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+      </Router>
+    </QueryClientProvider>
+  );
+}
 
 export default App;

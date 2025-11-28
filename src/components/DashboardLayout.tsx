@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { NavLink } from "./NavLink";
-import { Building2, ClipboardCheck, Users, UserPlus } from "lucide-react";
+import { Building2, ClipboardCheck, Users, UserPlus, Trophy } from "lucide-react";
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -49,6 +49,16 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
               >
                 <UserPlus className="h-4 w-4" />
                 인력 투입
+              </NavLink>
+
+              {/* 고객 랭킹 버튼 추가 */}
+              <NavLink
+                to="/client-ranking"
+                className="px-4 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors flex items-center gap-2"
+                activeClassName="text-foreground bg-muted"
+              >
+                <Trophy className="h-4 w-4" />
+                고객 랭킹
               </NavLink>
             </nav>
           </div>

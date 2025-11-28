@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import DashboardLayout from '@/components/DashboardLayout';
 import { useQuery } from '@tanstack/react-query';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { getCompletedProjects, getClientGrade } from '@/api/api';
-import type { ProjectWithClientEvalStatus, ClientGrade } from '@/types/evaluation';
+import { getCompletedProjects, getClientGrade, type ClientGrade } from '@/api/api';
+import type { ProjectWithClientEvalStatus } from '@/types/evaluation';
 import { Badge } from '@/components/ui/badge';
 import {
   AlertDialog,
@@ -18,7 +19,7 @@ import {
 import { toast } from 'sonner';
 
 // 평가자 ID는 현재 로그인 시스템이 없으므로 고정값으로 사용합니다.
-const MOCK_EMPLOYEE_ID = 10001;
+const MOCK_EMPLOYEE_ID = 10013;
 
 /**
  * 종료된 프로젝트 목록을 표시하고, 각 프로젝트에 대한 평가 또는 등급 조회를 수행하는 페이지 컴포넌트입니다.
@@ -62,8 +63,13 @@ function EvaluationListPage() {
    */
   const handleGradeCheck = async (clientId: number, clientName: string) => {
     try {
-      const gradeData = await getClientGrade(clientId);
-      setSelectedClientGrade(gradeData);
+      // 1. API로부터 기본 등급 정보를 가져옵니다.
+      const apiGradeData = await getClientGrade(clientId);
+      // 2. 상태에 저장하기 전에, 인자로 받은 clientId와 clientName을 추가하여
+      //    컴포넌트의 state가 기대하는 타입의 객체를 완성합니다.
+      const completeGradeData = { ...apiGradeData, client_id: clientId, client_name: clientName };
+      
+      setSelectedClientGrade(completeGradeData);
       setModalClientName(clientName);
       setIsGradeModalOpen(true);
     } catch (err) {
@@ -89,7 +95,7 @@ function EvaluationListPage() {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <DashboardLayout>
       {/* 페이지 상단 카드 UI */}
       <Card className="w-full max-w-4xl mx-auto">
         <CardHeader>
@@ -170,7 +176,7 @@ function EvaluationListPage() {
           <AlertDialogAction>확인</AlertDialogAction>
         </AlertDialogContent>
       </AlertDialog>
-    </div>
+    </DashboardLayout>
   );
 }
 
